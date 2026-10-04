@@ -97,7 +97,6 @@ This project closes that gap.
 | `Indian_Superstore_Dataset.xlsx` | Source dataset used for the project |
 | `Dashboard_Screenshots.pdf` | High-quality screenshots of all dashboard pages |
 | `Final_Insight_Summary.pdf` | Business-facing insights, recommendations and impact |
-| `Superstore_RLS_Regional_Analytics.pptx` | Client-style project presentation deck |
 | `README.md` | Project documentation |
 
 ---
