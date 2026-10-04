@@ -73,7 +73,7 @@ Both verified using **View As** in Power BI Desktop.
 | Superstore_RLS_Regional_Analytics.pbix | Full Power BI report |
 | Dashboard_Screenshots.pdf | Screenshots of all pages |
 | Final_Insight_Summary.pdf | Business insights & recommendations |
-| Presentation.pptx | Client-style project presentation |
+| Superstore_RLS_Regional_Analytics.pptx | Client-style project presentation |
 
 ---
 
