@@ -1,33 +1,53 @@
-# Superstore Sales & Profit Analytics
+# 📊 Superstore Sales & Profit Analytics
 ### RLS-Enabled Regional Performance Dashboard | Power BI Capstone Project
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-This is a complete end-to-end Power BI solution built on the **Indian Superstore** retail dataset. The goal was to transform raw transactional data into a secure, interactive analytics platform that enables Regional Managers to monitor sales, profit, customer behaviour, and shipping performance — while ensuring each manager can access **only their own region’s data**.
+An end-to-end Power BI solution built on the **Indian Superstore** retail dataset. It transforms raw transactional data into a secure, interactive analytics platform where Regional Managers can monitor sales, profit, customer behaviour, and shipping performance, while each manager can access **only their own region's data**.
 
 **What this project delivers:**
-- Fully cleaned and modelled dataset (51,284 orders)
-- Star-schema data model with 16+ production-grade DAX measures
-- Four analytical report pages + Customer Profile + Region Profile + custom tooltips
+- Cleaned and modelled dataset (51,284 orders)
+- Star-schema data model with 16+ DAX measures
+- Four analytical pages, two drill-through pages, and custom tooltips
 - Static Row-Level Security (5 regional roles) and Dynamic RLS using `USERPRINCIPALNAME()`
-- Client-ready presentation, insight summary, and complete documentation
+- Insight summary and complete documentation
 
 ---
 
-## Business Context
+## 🎯 Business Context
 
-A retail organisation selling Technology and Office Supplies across India required:
+A retail organisation selling Technology, Furniture and Office Supplies across India needed:
 - A single decision-ready view of sales, profit, customers, and shipping
 - Secure region-wise visibility for Regional Managers
-- The ability to move from raw data to actionable insights
-
-This project closes that gap.
+- A way to move from raw data to actionable insights
 
 ---
 
-## Dashboard Pages
+## 📊 Dashboard Preview
+
+### Sales Overview
+![Sales Overview](images/01-sales-overview.png)
+
+### Customer Insights (RFM)
+![Customer Insights](images/02-customer-insights.png)
+
+### Product & Discount Impact
+![Product & Discount](images/03-product-discount.png)
+
+### Region & Manager View
+![Region View](images/04-region-view.png)
+
+### Drill-through: Customer Profile
+![Customer Profile](images/05-customer-profile.png)
+
+### Drill-through: Region Profile
+![Region Profile](images/06-region-profile.png)
+
+---
+
+## 📑 Dashboard Pages
 
 | Page | Purpose |
 |------|---------|
@@ -35,100 +55,96 @@ This project closes that gap.
 | **Customer Insights** | RFM segmentation, AI Key Influencers, top customers table, Region vs Customer Sales |
 | **Product & Discount Impact** | Discount % vs Profit scatter (size = sales, colour = profit/loss), product ranking, delivery-time analysis |
 | **Region & Manager View** | Region → State → City hierarchy, regional profit comparison, monthly trend by region |
-| **Customer Profile** | Drill-through page with full order history and KPIs for an individual customer |
+| **Customer Profile** | Drill-through page with order history and KPIs for an individual customer |
 | **Region Profile** | Drill-through page with regional deep-dive (sales, profit, state contribution) |
-| **Product Tooltip** | Hover page showing live Sales, Profit, Rank and Discount % |
-| **Customer Tooltip** | Hover page showing customer-level summary metrics |
+| **Product / Customer Tooltips** | Hover pages showing live metrics for a product or customer |
 
 ---
 
-## Key Business Insights
+## 🔍 Key Business Insights
 
-- **Sales** grew **+49.12% YoY** and **Profit +47.89% YoY**, with overall margin at **11.61%**
-- **Technology** is the clear category leader (₹0.39 Bn)
-- **North** region consistently leads and serves as the internal benchmark
-- **Central** region underperforms across the full year — a structural gap, not seasonal
-- Discounts above **9%** are heavily concentrated in loss-making products
-- **“Tables – India”** is the single largest margin drag (₹6.28 Cr sales → ₹53.2 L loss)
-- Delivery time is stable (15–16 days) — logistics is not the primary issue
-- A small group of high-value customers drives disproportionate revenue
-- **Standard Class** shipping is the strongest driver of higher profit
+| Metric | Value |
+|:---:|:---:|
+| Total Sales | ₹1.05bn |
+| Total Profit | ₹121.79M |
+| Profit Margin | 11.61% |
+| Total Orders | 51K |
 
----
-
-## Strategic Recommendations
-
-1. **Discount Discipline** — Cap discounts at 5–7% **only** on historically loss-making SKUs (e.g. Tables – India)
-2. **Central Region Recovery** — Launch a 90-day structured recovery plan using North as the benchmark
-3. **Customer Retention** — Deploy a targeted loyalty programme for the Top 20 revenue-contributing customers
-4. **Seasonal Planning** — Align inventory and promotions with the proven Q4 (Nov–Dec) demand spike
-5. **Shipping Optimisation** — Prefer Standard Class on margin-sensitive orders
+1. **Growth came from volume, not margin.** Sales grew **+49.12% YoY** and profit **+47.89%**, but margin stayed flat at 11.61% (-0.10% YoY).
+2. **Furniture sells well but earns little.** Furniture contributes ₹0.34bn in sales but only **19.44%** of profit (roughly 7% margin), while Technology and Office Supplies earn roughly 14%.
+3. **North leads; Central has a volume gap, not a margin gap.** North delivers ₹332M in sales and ₹36.87M profit. Central has the lowest sales (₹96M) but the healthiest margin (~12.6%).
+4. **Margin leakage is concentrated.** 40 products are loss-making at a ~10% average discount. **"Tables – India"** is the biggest drag (₹6.28 Cr sales, ₹53.2 L loss).
+5. **Logistics is not the issue.** Average delivery is ~17.5 days across all categories.
+6. **High sales do not guarantee high profit.** The top customer by sales (₹35.9 L) has a net loss of ₹1.11 L due to loss-making orders.
+7. **Standard Class shipping** is associated with higher profit (Key Influencers). This is a correlation, not proof of cause.
+8. **Seasonality:** sales peak in Nov–Dec (₹114M+ per month) and dip in Feb (₹60M).
 
 ---
 
-## Technical Implementation
+## 💡 Recommendations
+
+1. **Review loss-making SKUs:** check pricing and cost on the 40 loss-making products, starting with Tables – India.
+2. **Furniture margin review:** investigate cost, pricing and discounting before scaling the category.
+3. **Central region growth:** apply North's sales approach to grow volume while protecting Central's strong margin.
+4. **Customer retention:** run a loyalty programme for the Top 20 revenue-contributing customers and win-back campaigns for high-value customers with long recency gaps.
+5. **Seasonal planning:** align inventory and promotions with the Nov–Dec demand spike.
+
+---
+
+## ⚙️ Technical Implementation
 
 | Area | Details |
 |------|---------|
-| **Data Model** | Star schema — Orders (Fact) + Date, Zone, Users (Dimensions) |
+| **Data Model** | Star schema: Orders (Fact) + Date, Zone, Users (Dimensions) |
 | **Measures** | 16+ DAX measures including YoY growth, RFM metrics, RANKX, Profit % |
 | **RLS – Static** | 5 roles (North, South, East, West, Central) filtering by Region |
 | **RLS – Dynamic** | Single role using `USERPRINCIPALNAME()` mapped via Users table |
-| **Interactivity** | Bookmarks, page navigation buttons, drill-through, custom tooltips |
+| **Interactivity** | Bookmarks, navigation buttons, drill-through, custom tooltips |
 | **Verification** | All RLS roles tested using **View As** in Power BI Desktop |
 
 ---
 
-## Data Preparation Highlights
+## 🧹 Data Preparation
 
 - Corrected data types and removed duplicates / blank critical fields
 - Removed Postal Code column (100% null)
 - Created calculated **Delivery Days** column
-- Identified and removed 6 records with invalid 29-Feb-2012 dates that were corrupting the Year slicer
-- Built continuous Date table for accurate time intelligence
+- Removed 6 records with invalid 29-Feb-2012 dates that corrupted the Year slicer
+- Built a continuous Date table for time intelligence
 
 ---
 
-## Deliverable Items
+## 📂 Repository Contents
 
 | File | Description |
 |------|-------------|
-| `Superstore_RLS_Regional_Analytics.pbix` | Complete Power BI report (model, measures, all pages) |
-| `Indian_Superstore_Dataset.xlsx` | Source dataset used for the project |
-| `Dashboard_Screenshots.pdf` | High-quality screenshots of all dashboard pages |
-| `Final_Insight_Summary.pdf` | Business-facing insights, recommendations and impact |
-| `README.md` | Project documentation |
+| `Superstore_RLS_Regional_Analytics.pbix` | Power BI report (model, measures, all pages) |
+| `Indian_Superstore_Dataset.xlsx` | Source dataset |
+| `Dashboard_Screenshots.pdf` | Screenshots of all dashboard pages |
+| `Final_Insight_Summary.pdf` | Business-facing insights and recommendations |
+| `images/` | Dashboard preview images used in this README |
 
 ---
 
-## How to Explore the Dashboard
+## ▶️ How to Explore
 
 1. Download `Superstore_RLS_Regional_Analytics.pbix` and open it in **Power BI Desktop**
-2. Use the on-page navigation buttons or bookmarks to move between pages
-3. Right-click any **customer** → Drill through → **Customer Profile**
-4. Right-click any **region** → Drill through → **Region Profile**
-5. Hover over products to see the custom **Product Tooltip**
-6. Test security: **Modeling → View as →** select a regional role or Dynamic Access role
+2. Use navigation buttons or bookmarks to move between pages
+3. Right-click a **customer** → Drill through → **Customer Profile**
+4. Right-click a **region** → Drill through → **Region Profile**
+5. Hover over products for the custom **Product Tooltip**
+6. Test security: **Modeling → View as →** select a regional role or the Dynamic Access role
 
 ---
 
-## Tools & Techniques
+## 🧰 Tools & Techniques
 
-- Power BI Desktop  
-- Power Query (M)  
-- DAX (Time Intelligence, RFM, RANKX, ALLEXCEPT)  
-- Star-schema modelling  
-- Row-Level Security (Static + Dynamic)  
-- Bookmarks & Navigation  
-- Drill-through pages  
-- Custom Tooltip pages  
+Power BI Desktop · Power Query (M) · DAX (Time Intelligence, RFM, RANKX, ALLEXCEPT) · Star-schema modelling · Static & Dynamic RLS · Bookmarks & Navigation · Drill-through · Custom Tooltips
 
 ---
 
-## Author
+## 👤 Author
 
-**Bhargav Bolisetti**  
-Power BI Capstone Project  
-October 2026
-
----
+**Bhargav Bolisetti**
+[LinkedIn](https://www.linkedin.com/in/bhargav-bolisetti-762654280)
+Power BI Capstone Project · October 2026
